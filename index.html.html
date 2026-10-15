@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pawan Chauhan — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#e50914;--red2:#b20710;--gold:#d4af37;--gold2:#f3dc8a;--bg:#0a0a0a;--card:#181818;--text:#f5f5f1;--dim:#a8a8a8;color-scheme:dark;box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--text);font-family:'Inter',Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.bebas{font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:.02em;font-weight:400}
+button{font:inherit;cursor:pointer;border:0}
+
+/* INTRO */
+#intro{position:fixed;inset:0;background:#000;z-index:100;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;transition:opacity .6s}
+#intro.out{opacity:0;pointer-events:none}
+#intro .logo{font-size:clamp(4rem,19vw,15rem);white-space:nowrap;color:var(--red);line-height:1;text-shadow:0 0 60px rgba(229,9,20,.6);animation:zoom 3.2s cubic-bezier(.6,0,.2,1) forwards;display:flex}
+#intro .logo span{display:inline-block;opacity:0;animation:pop .5s forwards}
+.glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(229,9,20,.45),transparent 55%);opacity:0;animation:glow 3.2s forwards}
+.streak{position:absolute;top:0;bottom:0;width:3px;background:linear-gradient(transparent,var(--red),var(--gold),transparent);opacity:0;animation:streak 1.4s .2s forwards}
+.skip{position:absolute;bottom:calc(24px + env(safe-area-inset-bottom,0px));font-size:.8rem;color:var(--dim)}
+@keyframes pop{from{opacity:0;transform:translateY(40px) scaleY(1.6)}to{opacity:1;transform:none}}
+@keyframes zoom{0%,55%{transform:scale(1)}100%{transform:scale(7);opacity:0}}
+@keyframes glow{0%{opacity:0}40%{opacity:1}100%{opacity:0}}
+@keyframes streak{0%{left:0;opacity:0}30%{opacity:1}100%{left:100%;opacity:0}}
+
+/* PROFILES */
+#profiles{position:fixed;inset:0;background:var(--bg);z-index:90;display:none;flex-direction:column;align-items:center;justify-content:center;gap:36px;padding:24px;text-align:center}
+#profiles.show{display:flex;animation:fade .6s}
+#profiles h1{font-size:clamp(2.2rem,6vw,3.6rem)}
+.pgrid{display:flex;flex-wrap:wrap;gap:clamp(14px,3vw,34px);justify-content:center}
+.prof{background:none;color:var(--dim);display:flex;flex-direction:column;align-items:center;gap:12px;transition:color .2s}
+.prof .av{width:clamp(88px,18vw,150px);aspect-ratio:1;border-radius:6px;display:grid;place-items:center;font-size:clamp(2.4rem,7vw,4rem);border:3px solid transparent;transition:border-color .2s,transform .2s}
+.prof:hover,.prof:focus-visible{color:var(--text);outline:0}
+.prof:hover .av,.prof:focus-visible .av{border-color:var(--text);transform:scale(1.06)}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* NAV */
+#app{display:none;position:relative;z-index:1}
+#app.show{display:block;animation:fade .8s}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:calc(14px + env(safe-area-inset-top,0px)) clamp(16px,4vw,48px) 14px;display:flex;align-items:center;gap:clamp(14px,3vw,34px);background:linear-gradient(rgba(0,0,0,.9),transparent);transition:background .3s}
+nav.solid{background:#0a0a0a}
+nav .brand{font-size:1.9rem;color:var(--red)}
+nav ul{list-style:none;display:flex;gap:clamp(10px,2vw,22px);font-size:.85rem;overflow-x:auto;scrollbar-width:none}
+nav ul a{color:#ddd;white-space:nowrap;transition:color .2s}
+nav ul a:hover{color:var(--gold2)}
+nav .who{margin-left:auto;font-size:.8rem;color:var(--dim);white-space:nowrap}
+nav .who b{color:var(--gold)}
+
+/* HERO */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;padding:120px clamp(16px,4vw,48px) 90px;background:radial-gradient(circle at 78% 30%,rgba(229,9,20,.32),transparent 52%),radial-gradient(circle at 15% 85%,rgba(212,175,55,.12),transparent 40%)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(transparent,rgba(10,10,10,.55))}
+.hero .big{position:absolute;right:2vw;top:12vh;font-size:clamp(14rem,42vw,34rem);line-height:.8;color:transparent;-webkit-text-stroke:2px rgba(229,9,20,.35);animation:float 6s ease-in-out infinite;user-select:none}
+@keyframes float{50%{transform:translateY(-18px)}}
+.hero .in{position:relative;z-index:2;max-width:640px}
+.badge{display:inline-block;border:1px solid var(--gold);color:var(--gold2);font-size:.72rem;padding:3px 10px;border-radius:3px;margin-bottom:16px;background:rgba(212,175,55,.08)}
+.hero h1{font-size:clamp(3.4rem,10vw,7rem);line-height:.92;text-shadow:0 4px 30px rgba(0,0,0,.6)}
+.hero h1 em{font-style:normal;color:var(--red)}
+.meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin:16px 0;font-size:.9rem;color:#d0d0d0}
+.meta .m{color:#46d369;font-weight:600}
+.hero p{color:#e5e5e5;font-size:1.05rem;max-width:520px}
+.btns{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.btn{padding:11px 26px;border-radius:5px;font-weight:600;font-size:1rem;transition:transform .15s,opacity .15s}
+.btn:hover{transform:scale(1.04);opacity:.9}
+.btn.w{background:var(--text);color:#000}
+.btn.g{background:rgba(109,109,110,.6);color:#fff}
+.btn.r{background:var(--red);color:#fff}
+
+/* ROWS */
+.row{padding:0 clamp(16px,4vw,48px);margin-bottom:44px;position:relative}
+.row h2{font-size:1.7rem;margin-bottom:12px}
+.row h2 small{font-family:Inter;font-size:.75rem;color:var(--gold);margin-left:10px;letter-spacing:0}
+.track{display:flex;gap:10px;overflow-x:auto;padding:20px 4px 28px;scroll-snap-type:x proximity;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.card{flex:0 0 auto;width:clamp(230px,26vw,330px);aspect-ratio:16/10;border-radius:6px;position:relative;overflow:hidden;scroll-snap-align:start;cursor:pointer;text-align:left;color:#fff;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .3s,box-shadow .3s;border:1px solid rgba(255,255,255,.06)}
+.card:hover,.card:focus-visible{transform:scale(1.1);z-index:5;box-shadow:0 14px 40px rgba(0,0,0,.8);outline:0}
+.card .t{font-size:1.9rem;line-height:1}
+.card .s{font-size:.78rem;color:#ddd;margin-top:6px}
+.card .tag{position:absolute;top:10px;left:10px;font-size:.65rem;font-weight:700;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#000;padding:2px 8px;border-radius:3px}
+.card .ico{position:absolute;top:8px;right:14px;font-size:3.6rem;opacity:.22;font-family:'Bebas Neue'}
+.card.sm{width:clamp(200px,22vw,270px);aspect-ratio:16/11}
+.card.sm .t{font-size:1.35rem}
+.arrow{position:absolute;top:50%;z-index:6;width:44px;height:120px;background:rgba(0,0,0,.65);color:#fff;font-size:1.6rem;display:none}
+@media(hover:hover){.row:hover .arrow{display:block}}
+.arrow.l{left:0}.arrow.r2{right:0}
+
+/* DSA now playing */
+.now{margin:0 clamp(16px,4vw,48px) 44px;border:1px solid rgba(212,175,55,.4);border-radius:8px;padding:24px;background:linear-gradient(120deg,rgba(229,9,20,.18),rgba(212,175,55,.06));display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.now .l{flex:1;min-width:240px}
+.now h3{font-size:2rem}
+.now p{color:var(--dim);font-size:.95rem}
+.bar{height:5px;background:#333;border-radius:3px;margin-top:14px;overflow:hidden}
+.bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--red),var(--gold));transform-origin:left;animation:load 3s ease-in-out infinite alternate}
+@keyframes load{from{transform:scaleX(.15)}to{transform:scaleX(.62)}}
+
+/* CONTACT */
+#contact{padding:70px clamp(16px,4vw,48px) calc(60px + env(safe-area-inset-bottom,0px));text-align:center;border-top:1px solid #222;background:linear-gradient(#0a0a0a,#120304)}
+#contact h2{font-size:clamp(2.2rem,6vw,3.6rem)}
+#contact p{color:var(--dim);margin:8px auto 26px;max-width:480px}
+.links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.copy{margin-top:40px;font-size:.78rem;color:#666}
+
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.3}
+.role{font-size:clamp(1.1rem,3vw,1.6rem);color:var(--gold2);min-height:2em;margin-top:8px}
+.role b{font-weight:600}
+.role .cur{display:inline-block;width:2px;height:1em;background:var(--red);margin-left:3px;vertical-align:-2px;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;padding:0 clamp(16px,4vw,48px);margin:-30px 0 50px;position:relative;z-index:3}
+.stat{background:rgba(24,24,24,.88);border:1px solid rgba(212,175,55,.3);border-radius:8px;padding:18px;text-align:center}
+.stat b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:2.8rem;color:var(--gold2);line-height:1}
+.stat span{font-size:.8rem;color:var(--dim)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:0 clamp(16px,4vw,48px);margin-bottom:50px}
+.about .box{background:rgba(24,24,24,.88);border-left:4px solid var(--red);border-radius:6px;padding:22px}
+.about h2{font-size:1.8rem;margin-bottom:10px}
+.about p{color:#d6d6d6;margin-bottom:10px}
+@media(max-width:700px){.about{grid-template-columns:1fr}}
+/* MODAL */
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:80;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+#modal.show{display:flex;animation:fade .25s}
+.mbox{background:var(--card);border-radius:10px;width:min(680px,100%);overflow:hidden;position:relative;animation:up .35s}
+@keyframes up{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.mtop{height:220px;display:flex;align-items:flex-end;padding:22px;position:relative}
+.mtop::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,var(--card))}
+.mtop h2{font-size:3rem;position:relative;z-index:1;line-height:1}
+.mbody{padding:6px 24px 26px}
+.mbody p{color:#d6d6d6;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chips span{font-size:.75rem;border:1px solid #444;color:var(--gold2);padding:3px 11px;border-radius:20px}
+.x{position:absolute;top:12px;right:12px;z-index:3;width:36px;height:36px;border-radius:50%;background:#000;color:#fff;font-size:1.1rem}
+
+@media(max-width:700px){nav .who{display:none}.hero{min-height:86vh;padding-bottom:70px}.hero .big{opacity:.6}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="intro" role="button" aria-label="Skip intro">
+  <div class="glow"></div><div class="streak"></div>
+  <div class="logo bebas" id="logo"></div>
+  <div class="skip">Tap to skip</div>
+</div>
+
+
+<canvas id="bg"></canvas>
+<div id="app">
+  <nav id="nav">
+    <a class="brand bebas" href="#top">PAWAN</a>
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certs">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="big bebas" aria-hidden="true">P</div>
+    <div class="in">
+      <span class="badge">★ OPEN TO WORK</span>
+      <h1 class="bebas">Pawan <em>Chauhan</em></h1>
+      <div class="role"><b id="rt"></b><span class="cur"></span></div>
+      <div class="meta"><span class="m">100+ projects built</span><span>NxtWave</span><span>BCA · Thakur College</span><span>Mumbai</span></div>
+      <p>Software engineer who builds full stack, from SQL and Node.js to React. React is done. Now going all in on data structures and algorithms.</p>
+      <div class="btns">
+        <a class="btn w" href="#projects">▶ Play Projects</a>
+        <button class="btn g" id="more">ⓘ More Info</button>
+        <a class="btn r" href="#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="stats"><div class="stat"><b data-n="100" data-s="+">0</b><span>Projects built</span></div><div class="stat"><b data-n="11">0</b><span>Certificates</span></div><div class="stat"><b data-n="2">0</b><span>Years at NxtWave</span></div><div class="stat"><b data-n="3">0</b><span>Live projects</span></div></div>
+
+  <section class="about" id="about">
+    <div class="box"><h2 class="bebas">Who I am</h2><p>I am a software engineer from Mumbai. I trained for two years at NxtWave and built 100+ projects end to end, from SQL and Node.js to React.</p><p>I am finishing my BCA at Thakur College, Kandivali.</p></div>
+    <div class="box"><h2 class="bebas">What I am doing now</h2><p>React is done. My full focus now is data structures and algorithms, so I can crack strong engineering roles.</p><p>Open to jobs, internships and freelance work.</p></div>
+  </section>
+
+  <section class="row" id="projects"><h2 class="bebas">Featured Projects <small>Now streaming</small></h2><div class="track" id="tp"></div></section>
+  <section class="row" id="skills"><h2 class="bebas">My Tech Stack</h2><div class="track" id="ts"></div></section>
+
+  <div class="now">
+    <div class="l"><span class="badge">NOW PLAYING</span><h3 class="bebas">Data Structures &amp; Algorithms</h3><p>Full focus on DSA for stronger engineering roles. New episode every day.</p><div class="bar"><i></i></div></div>
+  </div>
+
+  <section class="row" id="certs"><h2 class="bebas">Certificates <small>11 verified · NxtWave CCBP 4.0 Academy</small></h2><div class="track" id="tc"></div></section>
+
+  <section id="contact">
+    <h2 class="bebas">Ready to <span style="color:var(--red)">hire</span> or collaborate?</h2>
+    <p>Open to jobs, internships and freelance projects. Say hello.</p>
+    <div class="links">
+      <a class="btn r" href="mailto:chauhanpawan9557@gmail.com">Email me</a>
+      <a class="btn w" href="https://github.com/Pawan-8108-tech" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn g" href="https://www.linkedin.com/in/pawan-chauhan-324410327" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="copy">&copy; 2026 Pawan Chauhan · chauhanpawan9557@gmail.com</div>
+  </section>
+</div>
+
+<div id="modal" aria-modal="true" role="dialog"><div class="mbox" id="mbox"></div></div>
+
+<script>
+var $=function(s){return document.querySelector(s)};
+var CB='https://certificates.ccbp.in/academy/';
+var PROJ=[
+ {t:'NxtShop',tag:'NEW',d:'A shopping app built with React JS that pulls products from an API and handles cart features. Fully responsive and live on Netlify.',s:['React JS','JavaScript','API','HTML','CSS'],u:'https://nxtshop-pawan.netlify.app',c:['#e50914','#4a0306']},
+ {t:'Wikipedia Clone',d:'A recreation of the Wikipedia article browsing experience. Node.js and Express serve article data from a SQL database.',s:['Node.js','Express.js','SQL','HTML','CSS'],u:'https://pawanchauhan.ccbp.tech',c:['#1d3557','#080d16']},
+ {t:'Todo Application',d:'A React task manager where you add, complete and delete tasks. Everything is saved in the browser with LocalStorage.',s:['React','LocalStorage'],u:'https://pawancha.ccbp.tech',c:['#7a5c10','#1a1204']}
+];
+var SK=[
+ {t:'Frontend',i:'</>',s:['HTML & CSS','JavaScript','Bootstrap','Flexbox','React'],c:['#b20710','#2a0204']},
+ {t:'Backend',i:'{ }',s:['Node.js','Express.js','SQL','Python'],c:['#0f4c5c','#04161a']},
+ {t:'Tools',i:'>_',s:['Git','Command Line','Operating Systems'],c:['#5c3d99','#150d26']},
+ {t:'Learning Now',i:'DSA',s:['Data Structures','Algorithms'],c:['#8a6d12','#1c1503']}
+];
+var CE=[
+ ['Build Your Own Responsive Website','Bootstrap · Flexbox','Dec 2024','responsive-website?id=CUKYAKYWLG'],
+ ['Build Your Own Static Website','HTML · CSS · Bootstrap','Dec 2024','static-website?id=NRQMIFIITR'],
+ ['Introduction to Databases','SQL','Jan 2025','introduction-to-databases?id=MUUARWHDXY'],
+ ['XPM 4.0 Fundamentals','Goal Setting · Integrity','Mar 2025','xpm-4-0-fundamentals?id=ZIPGBYSULC'],
+ ['Programming Foundations with Python','Python','Aug 2025','programming-foundations-with-python?id=URIOTZZUAV'],
+ ['Build Your Own Dynamic Web Application','JavaScript','Feb 2026','dynamic-web-application?id=RQINPRNSCG'],
+ ['JavaScript Essentials','JavaScript','Mar 2026','javascript-essentials?id=UHYXIFBKJR'],
+ ['Responsive Web Design Using Flexbox','Flexbox','Mar 2026','responsive-web-design-using-flexbox?id=SUEYYGVDBX'],
+ ['Intro to OS','Operating Systems','Apr 2026',''],
+ ['Developer Foundations','Git · Command Line','May 2026','developer-foundations?id=QCZJDZHUZP'],
+ ['Node.js','Node.js','Aug 2026','node-js?id=BMZACMNEUQ']
+];
+
+function bg(c){return 'background:linear-gradient(145deg,'+c[0]+','+c[1]+')'}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+/* logo letters */
+var L=$('#logo');'PAWAN'.split('').forEach(function(ch,i){var s=document.createElement('span');s.textContent=ch;s.style.animationDelay=(.15*i+.3)+'s';L.appendChild(s)});
+
+
+/* rows */
+function card(o,cls,i,k){return '<button class="card '+cls+'" style="'+bg(o.c)+'" data-k="'+k+'" data-i="'+i+'">'+(o.tag?'<span class="tag">'+o.tag+'</span>':'')+(o.i?'<span class="ico">'+o.i+'</span>':'')+'<div class="t bebas">'+esc(o.t)+'</div><div class="s">'+esc(o.s.join(' · '))+'</div></button>'}
+$('#tp').innerHTML=PROJ.map(function(o,i){return card(o,'',i,'p')}).join('');
+$('#ts').innerHTML=SK.map(function(o,i){return card(o,'sm',i,'s')}).join('');
+$('#tc').innerHTML=CE.map(function(e,i){return card({t:e[0],s:[e[1],e[2]],c:i%2?['#3a0a0d','#120304']:['#2a2108','#0e0b03'],i:'✓'},'sm',i,'c')}).join('');
+
+/* arrows */
+['tp','ts','tc'].forEach(function(id){var t=document.getElementById(id),r=t.parentNode;
+ [['l','‹',-1],['r2','›',1]].forEach(function(a){var b=document.createElement('button');b.className='arrow '+a[0];b.textContent=a[1];b.setAttribute('aria-label','Scroll');b.onclick=function(){t.scrollBy({left:a[2]*t.clientWidth*.8,behavior:'smooth'})};r.appendChild(b)})});
+
+/* modal */
+function open(html,c){var m=$('#mbox');m.innerHTML='<button class="x" aria-label="Close">✕</button>'+html;m.querySelector('.x').onclick=close;$('#modal').classList.add('show')}
+function close(){$('#modal').classList.remove('show')}
+$('#modal').onclick=function(e){if(e.target.id==='modal')close()};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+document.addEventListener('click',function(e){var c=e.target.closest('.card');if(!c)return;var k=c.dataset.k,i=+c.dataset.i,o;
+ if(k==='p'){o=PROJ[i];open('<div class="mtop" style="'+bg(o.c)+'"><h2 class="bebas">'+o.t+'</h2></div><div class="mbody"><p>'+o.d+'</p><div class="chips">'+o.s.map(function(x){return '<span>'+x+'</span>'}).join('')+'</div><a class="btn r" href="'+o.u+'" target="_blank" rel="noopener">▶ Open live project</a></div>')}
+ else if(k==='s'){o=SK[i];open('<div class="mtop" style="'+bg(o.c)+'"><h2 class="bebas">'+o.t+'</h2></div><div class="mbody"><div class="chips">'+o.s.map(function(x){return '<span>'+x+'</span>'}).join('')+'</div></div>')}
+ else{var e2=CE[i];open('<div class="mtop" style="'+bg(['#2a2108','#0e0b03'])+'"><h2 class="bebas">'+esc(e2[0])+'</h2></div><div class="mbody"><p>'+e2[1]+' · Issued '+e2[2]+'<br>NxtWave CCBP 4.0 Academy</p>'+(e2[3]?'<a class="btn r" href="'+CB+e2[3]+'" target="_blank" rel="noopener">Verify certificate</a>':'')+'</div>')}
+});
+$('#more').onclick=function(){open('<div class="mtop" style="'+bg(['#e50914','#2a0204'])+'"><h2 class="bebas">About Pawan</h2></div><div class="mbody"><p>I am a software engineer from Mumbai. I trained for two years at NxtWave and built 100+ projects end to end, from the database to the UI.</p><p>I am finishing my BCA at Thakur College, Kandivali. React is complete, and now my whole focus is data structures and algorithms to land a strong engineering role.</p><a class="btn r" href="#contact" onclick="document.getElementById(\'modal\').classList.remove(\'show\')">Get in touch</a></div>')};
+
+/* roles */
+var RO=['Full Stack Developer','React Developer','Node.js Builder','DSA Grinder'],ri=0,ci=0,del=false,rt=$('#rt');
+(function tick(){var w=RO[ri];ci+=del?-1:1;rt.textContent=w.slice(0,ci);var d=del?45:90;if(!del&&ci===w.length){del=true;d=1400}else if(del&&ci===0){del=false;ri=(ri+1)%RO.length;d=300}setTimeout(tick,d)})();
+/* counters */
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target,n=+el.dataset.n,s=el.dataset.s||'',k=0;cio.unobserve(el);var iv=setInterval(function(){k+=Math.ceil(n/30);if(k>=n){k=n;clearInterval(iv)}el.textContent=k+s},40)})});
+document.querySelectorAll('[data-n]').forEach(function(el){cio.observe(el)});
+/* background: falling code */
+(function(){var c=$('#bg'),x=c.getContext('2d'),ch='01{}<>/;=()[]',col=[],fs=16,W,H;
+function size(){W=c.width=innerWidth;H=c.height=innerHeight;col=[];for(var i=0;i<Math.floor(W/fs);i++)col.push(Math.random()*H/fs)}
+size();addEventListener('resize',size);
+function draw(){x.fillStyle='rgba(10,10,10,.12)';x.fillRect(0,0,W,H);x.font=fs+'px monospace';
+for(var i=0;i<col.length;i++){var g=Math.random()<.04;x.fillStyle=g?'#d4af37':'#e50914';x.fillText(ch[Math.floor(Math.random()*ch.length)],i*fs,col[i]*fs);if(col[i]*fs>H&&Math.random()>.975)col[i]=0;col[i]+=.5}}
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){draw();return}
+setInterval(draw,70)})();
+/* flow */
+var done=false;
+function toProfiles(){if(done)return;done=true;$('#intro').classList.add('out');setTimeout(function(){$('#intro').style.display='none';enter()},500)}
+function enter(){$('#app').classList.add('show');window.scrollTo(0,0)}
+$('#intro').onclick=toProfiles;setTimeout(toProfiles,3300);
+window.addEventListener('scroll',function(){$('#nav').classList.toggle('solid',window.scrollY>60)},{passive:true});
+</script>
+</body>
+</html>
